@@ -1,5 +1,7 @@
 package org.xman.jmx.dynamic;
 
+import java.lang.management.ManagementFactory;
+
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
@@ -9,13 +11,16 @@ import com.sun.jdmk.comm.HtmlAdaptorServer;
  * 启动jmx管理服务器
  * 
  */
-public class PersonDynamicAgent {
+public class PersonDynamicManagement {
     static final String DOMAIN = "MyMBeanDynamic";
 
     public static void main(String[] args) {
 	try {
 	    // 创建一个MBean服务对象，DOMAIN类似于java里面的公共package部分
-	    MBeanServer server = MBeanServerFactory.createMBeanServer(DOMAIN);
+	    // MBeanServer server = MBeanServerFactory.createMBeanServer(DOMAIN);
+	    
+	    MBeanServer server = ManagementFactory.getPlatformMBeanServer();
+	    
 	    // 创建DynamicMBean对象
 	    PersonDynamic personDynamic = new PersonDynamic();
 	    

@@ -23,31 +23,19 @@ import org.apache.commons.beanutils.PropertyUtils;
  * 
  */
 public class PersonDynamic implements DynamicMBean {
-    /**
-     * person对象就是我们需要管理的Bean
-     */
-    private Person person = new Person();
-    /**
-     * 描述属性信息
-     */
-    private List<MBeanAttributeInfo> attributes = new ArrayList<MBeanAttributeInfo>();
-    /**
-     * 描述构造器信息
-     */
-    private List<MBeanConstructorInfo> constructors = new ArrayList<MBeanConstructorInfo>();
-    /**
-     * 描述方法信息
-     */
-    private List<MBeanOperationInfo> operations = new ArrayList<MBeanOperationInfo>();
-    /**
-     * 描述通知信息
-     */
-    private List<MBeanNotificationInfo> notifications = new ArrayList<MBeanNotificationInfo>();
-    
-    /**
-     * MBeanInfo用于管理以上描述信息
-     */
+    // MBeanInfo用于管理以上描述信息
     private MBeanInfo mBeanInfo;
+    // Person对象就是我们需要管理的Bean
+    private Person person = new Person();
+
+    // 描述属性信息
+    private List<MBeanAttributeInfo> attributes = new ArrayList<MBeanAttributeInfo>();
+    // 描述构造器信息
+    private List<MBeanConstructorInfo> constructors = new ArrayList<MBeanConstructorInfo>();
+    // 描述方法信息
+    private List<MBeanOperationInfo> operations = new ArrayList<MBeanOperationInfo>();
+    // 描述通知信息
+    private List<MBeanNotificationInfo> notifications = new ArrayList<MBeanNotificationInfo>();
 
     public PersonDynamic() {
 	try {
@@ -60,31 +48,35 @@ public class PersonDynamic implements DynamicMBean {
     /**
      * 初始化方法
      * 
-     * @since 2010-9-15 上午11:35:18
      * @throws Exception
      */
     private void init() throws Exception {
 	// 构建需要被管理的属性，方法等消息
 	buildDynamicInfo();
+
 	// 创建一个MBeanInfo对象
 	mBeanInfo = createMBeanInfo();
     }
 
     /**
      * 
-     * 构建需要被管理的属性，方法, 构造器等消息. 具体api可以去参考相关文档。
+     * 构建需要被管理的属性，方法, 构造器等消息。
      * 
      * @throws Exception
      */
     private void buildDynamicInfo() throws Exception {
-	constructors.add(new MBeanConstructorInfo("PersonDynamic()构造器", getPerson().getClass().getConstructors()[0]));
+	Class<?> pclazz = getPerson().getClass();
+
+	// 构造函数信息
+	constructors.add(new MBeanConstructorInfo("PersonDynamic()构造器", pclazz.getConstructors()[0]));
+	// 暴露的属性
 	attributes.add(new MBeanAttributeInfo("name", "java.lang.String", "姓名", true, true, false));
 	attributes.add(new MBeanAttributeInfo("gender", "java.lang.String", "性别", true, true, false));
 	attributes.add(new MBeanAttributeInfo("age", "int", "年龄", true, true, false));
-	operations.add(new MBeanOperationInfo("toString()方法.", getPerson().getClass().getMethod("toString", null)));
-	operations.add(new MBeanOperationInfo("printName()方法.", getPerson().getClass().getMethod("printName", null)));
-	operations.add(new MBeanOperationInfo("say()方法.", getPerson().getClass().getMethod("say",
-		new Class[] { String.class })));
+	// 暴露的方法
+	operations.add(new MBeanOperationInfo("toString()方法.", pclazz.getMethod("toString")));
+	operations.add(new MBeanOperationInfo("printName()方法.", pclazz.getMethod("printName")));
+	operations.add(new MBeanOperationInfo("say()方法.", pclazz.getMethod("say", new Class[] { String.class })));
     }
 
     /**
@@ -94,8 +86,7 @@ public class PersonDynamic implements DynamicMBean {
      * @return
      */
     private MBeanInfo createMBeanInfo() {
-	return new MBeanInfo(this.getClass().getName(), 
-		"PersonDynamic",
+	return new MBeanInfo(this.getClass().getName(), "PersonDynamic",
 		attributes.toArray(new MBeanAttributeInfo[attributes.size()]),
 		constructors.toArray(new MBeanConstructorInfo[constructors.size()]),
 		operations.toArray(new MBeanOperationInfo[operations.size()]),
@@ -184,8 +175,6 @@ public class PersonDynamic implements DynamicMBean {
     /**
      * 批量设置属性值
      */
-    @SuppressWarnings("unchecked")
-    @Override
     public AttributeList setAttributes(AttributeList attributes) {
 	if (attributes == null || attributes.isEmpty()) {
 	    return attributes;

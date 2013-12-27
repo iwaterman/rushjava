@@ -5,13 +5,11 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 /**
  * 被管理的Bean
  * 
- * @since 2010-9-13 下午02:35:34
  */
 public class Person {
     private String name;
     private int age;
     private String gender;
-    private int sendCount = 0;
 
     public String getName() {
 	return name;
