@@ -2,14 +2,14 @@ package org.xman.dp.creational.singleton;
 
 public class BillPughSingleton {
 
-    private BillPughSingleton() {
-    }
+	private BillPughSingleton() {
+	}
 
-    private static class SingletonHelper {
-	private static final BillPughSingleton INSTANCE = new BillPughSingleton();
-    }
+	private static class SingletonHelper {
+		private static final BillPughSingleton INSTANCE = new BillPughSingleton();
+	}
 
-    public static BillPughSingleton getInstance() {
-	return SingletonHelper.INSTANCE;
-    }
+	public static BillPughSingleton getInstance() {
+		return SingletonHelper.INSTANCE;
+	}
 }
