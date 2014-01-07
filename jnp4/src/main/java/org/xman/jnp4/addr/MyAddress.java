@@ -9,11 +9,11 @@ public class MyAddress {
 		try {
 			InetAddress address = InetAddress.getLocalHost();
 			System.out.println(address);
-			
+
 			InetAddress me = InetAddress.getLocalHost();
 			String dottedQuad = me.getHostAddress();
 			System.out.println("My address is " + dottedQuad);
-				
+
 		} catch (UnknownHostException ex) {
 			System.out.println("Could not find this computer's address.");
 		}

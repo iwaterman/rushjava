@@ -1,5 +1,5 @@
 package org.xman.jnp4.addr;
-	
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,10 +20,8 @@ public class PooledWeblog {
 		ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
 		Queue<LogEntry> results = new LinkedList<LogEntry>();
 
-		try (BufferedReader in = new BufferedReader(new InputStreamReader(
-				new FileInputStream(args[0]), "UTF-8"));) {
-			for (String entry = in.readLine(); entry != null; entry = in
-					.readLine()) {
+		try (BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(args[0]), "UTF-8"));) {
+			for (String entry = in.readLine(); entry != null; entry = in.readLine()) {
 				LookupTask task = new LookupTask(entry);
 				Future<String> future = executor.submit(task);
 				LogEntry result = new LogEntry(entry, future);

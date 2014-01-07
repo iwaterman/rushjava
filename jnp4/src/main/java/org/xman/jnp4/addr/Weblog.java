@@ -16,8 +16,7 @@ public class Weblog {
 				Reader in = new InputStreamReader(fin);
 				BufferedReader bin = new BufferedReader(in);) {
 
-			for (String entry = bin.readLine(); entry != null; entry = bin
-					.readLine()) {
+			for (String entry = bin.readLine(); entry != null; entry = bin.readLine()) {
 				// separate out the IP address
 				int index = entry.indexOf(' ');
 				String ip = entry.substring(0, index);
