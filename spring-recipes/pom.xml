@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.xman</groupId>
@@ -12,6 +12,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version1>3.2.7.RELEASE</spring.version1>
+		<spring.version>4.0.1.RELEASE</spring.version>
 	</properties>
 
 
@@ -37,13 +39,30 @@
 			<artifactId>commons-net</artifactId>
 			<version>3.3</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.0.0.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -88,7 +107,7 @@
 						<!-- 是否添加maven描述，默认为true，从而会在MANIFEST.MF同级目录下生成maven目录  -->
 						<addMavenDescriptor>false</addMavenDescriptor>
 						<index>false</index>
-						     <!-- 在MANIFEST.MF添加默认信息，如JDK等  -->
+						     <!-- 在MANIFEST.MF添加默认信息，如JDK等�?-->
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 						</manifest>
@@ -104,5 +123,6 @@
 	</build>
 	<modules>
 		<module>spring-intro</module>
-	</modules>
+    <module>spring-aop</module>
+  </modules>
 </project>
