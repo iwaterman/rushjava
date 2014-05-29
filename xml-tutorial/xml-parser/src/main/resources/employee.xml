@@ -1,15 +1,15 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Employees>
-    <Employee>
-        <name>Pankaj</name>
+    <Employee id="1">
         <age>29</age>
-        <role>Java Developer</role>
+        <name>Pankaj</name>
         <gender>Male</gender>
+        <role>Java Developer</role>
     </Employee>
-    <Employee>
-        <name>Lisa</name>
+    <Employee id="2">
         <age>35</age>
-        <role>CSS Developer</role>
+        <name>Lisa</name>
         <gender>Female</gender>
+        <role>Manager</role>
     </Employee>
 </Employees>

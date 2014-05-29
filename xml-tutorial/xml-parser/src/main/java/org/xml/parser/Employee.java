@@ -1,10 +1,19 @@
 package org.xml.parser;
 
 public class Employee {
+	private int id;
 	private String name;
 	private String gender;
 	private int age;
 	private String role;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -40,7 +49,8 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee:: Name=" + this.name + " Age=" + this.age + " Gender=" + this.gender + " Role=" + this.role;
-	}
+        return "Employee:: ID="+this.id+" Name=" + this.name + " Age=" + this.age + " Gender=" + this.gender +
+                " Role=" + this.role;
+    }
 
 }
