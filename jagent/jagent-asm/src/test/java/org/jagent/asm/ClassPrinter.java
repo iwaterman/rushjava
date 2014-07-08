@@ -1,5 +1,7 @@
 package org.jagent.asm;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.objectweb.asm.AnnotationVisitor;
@@ -54,8 +56,12 @@ public class ClassPrinter extends ClassVisitor {
 	}
 	
 	public static void main(String[] args) throws IOException {
+		File clazz = new File("target/classes/org/jagent/asm/hello/HelloAsm.class");
+		System.out.println(clazz.getAbsolutePath());
+		FileInputStream fis = new FileInputStream(clazz);
+		
 		ClassPrinter cp = new ClassPrinter();
-		ClassReader cr = new ClassReader("java.lang.Runnable");
+		ClassReader cr = new ClassReader(fis);
 		cr.accept(cp, 0);
 	}
 }
