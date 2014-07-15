@@ -13,6 +13,12 @@ public class MyTask implements Runnable{
 
 	@Override
 	public void run() {
-		System.out.println("Hello, Asm5!");
+		try {
+			Thread.sleep(1000L);
+			
+			System.out.println("Hello, Asm5!");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }
