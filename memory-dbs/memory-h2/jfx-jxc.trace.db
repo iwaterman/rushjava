@@ -1,0 +1,36 @@
+07-15 09:44:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "STUDENTS" not found; SQL statement:
+INSERT INTO STUDENTS(STUD_ID,NAME,EMAIL,DOB)
+		VALUES(?,?,?,?) [42102-180]
+07-15 09:44:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "STUDENTS" not found; SQL statement:
+SELECT * FROM STUDENTS [42102-180]
+07-15 09:44:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "STUDENTS" not found; SQL statement:
+SELECT STUD_ID AS STUDID, NAME, EMAIL, DOB
+		FROM STUDENTS WHERE STUD_ID=? [42102-180]
+07-15 09:44:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+CREATE TABLE STUDENTS
+(
+STUD_ID INT(11) NOT NULL AUTO_INCREMENT,
+NAME VARCHAR(50) NOT NULL,
+EMAIL VARCHAR(50) NOT NULL,
+DOB DATE DEFAULT NULL,
+PRIMARY KEY (STUD_ID)
+) 
+                                       
+INSERT[*] INTO STUDENTS(STUD_ID,NAME,EMAIL,DOB)
+VALUES (1,'Student1','student1@gmail.com','1983-06-25') "; SQL statement:
+
+CREATE TABLE STUDENTS
+(
+stud_id int(11) NOT NULL AUTO_INCREMENT,
+name varchar(50) NOT NULL,
+email varchar(50) NOT NULL,
+dob date DEFAULT NULL,
+PRIMARY KEY (stud_id)
+) 
+/*Sample Data for the students table */
+insert into students(stud_id,name,email,dob)
+values (1,'Student1','student1@gmail.com','1983-06-25') [42000-180]
