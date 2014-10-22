@@ -8,7 +8,6 @@
 	<modules>
 		<module>jagent</module>
 		<module>tomcat</module>
-    <module>javafxs</module>
 		<module>swings</module>
 		<module>javafxs</module>
 		<module>memory-dbs</module>
