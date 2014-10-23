@@ -15,6 +15,12 @@
     <name>hello-ueditor</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.21</version>
+        </dependency>
+
 
         <!-- 百度编辑器的依赖包 ==开始== -->
         <dependency>
